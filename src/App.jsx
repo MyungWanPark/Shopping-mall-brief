@@ -49,26 +49,24 @@ const products = [
 ]
 
 const slides = [
+    {
+    eyebrow: 'YOUR EVERYDAY LOOK',
+    title: '오늘의 온도에\n어울리는 옷',
+    description: '좋은 소재와 편안한 핏,\n오래 입을수록 마음에 드는 옷',
+    image: look2,
+  },
   {
     eyebrow: 'A QUIET WINTER',
     title: '깔끔하게\n입고 싶은 날',
     description: '출근부터 주말 약속까지,\n그대로 따라 입는 코디',
-    image:
-      'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=2000&q=90',
+    image: look4,
   },
-  {
-    eyebrow: 'YOUR EVERYDAY LOOK',
-    title: '오늘의 온도에\n어울리는 옷',
-    description: '좋은 소재와 편안한 핏,\n오래 입을수록 마음에 드는 옷',
-    image:
-      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=2000&q=90',
-  },
+
   {
     eyebrow: 'NEW SEASON, NEW MOOD',
-    title: '겨울을 완성하는\n작은 차이',
+    title: '가을을 완성하는\n작은 차이',
     description: '매일 손이 가는 기본 아이템,\n지금 가장 좋은 가격으로',
-    image:
-      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=2000&q=90',
+    image: look1,
   },
 ]
 
