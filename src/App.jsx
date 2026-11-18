@@ -159,6 +159,35 @@ function App() {
     showNotice(isFavorite ? '찜 목록에서 삭제했어요.' : '찜 목록에 담았어요.')
   }
 
+  const handleProductClick = (event, product) => {
+    event.preventDefault()
+
+    const navigateToProduct = () => window.location.assign(product.link)
+    if (typeof window.gtag !== 'function') {
+      navigateToProduct()
+      return
+    }
+
+    let hasNavigated = false
+    const continueNavigation = () => {
+      if (hasNavigated) return
+      hasNavigated = true
+      window.clearTimeout(navigationTimeout)
+      navigateToProduct()
+    }
+    const navigationTimeout = window.setTimeout(continueNavigation, 1000)
+
+    window.gtag('event', 'select_item', {
+      item_list_name: 'Weekend Lookbook',
+      link_url: product.link,
+      item_id: product.name.toLowerCase().replace(/\s+/g, '_'),
+      item_name: product.name,      // 이 매개변수들이 실시간 보고서에 바로 뜹니다
+      item_category: product.category,
+      event_callback: continueNavigation,
+      event_timeout: 800,
+    })
+  }
+
   return (
     <div className="mx-auto w-[calc(100%-48px)] max-w-[1160px] max-[760px]:w-[calc(100%-32px)] max-[390px]:w-[calc(100%-24px)]">
       <header className="relative z-10 bg-white">
@@ -340,6 +369,7 @@ function App() {
                       className="absolute inset-0 z-[1] rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a8066]"
                       href={product.link}
                       aria-label={`${product.name} 상품 자세히 보기`}
+                      onClick={(event) => handleProductClick(event, product)}
                     />
                     <div className="relative aspect-[0.68] overflow-hidden bg-[#eeece8]">
                       <img
